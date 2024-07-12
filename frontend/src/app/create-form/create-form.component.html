@@ -1,21 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
-    <ion-title>Welcome</ion-title>
+    <ion-title>Gerar nova senha</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-item>
+  <div class="form">
     <ion-input
-      labelPlacement="stacked"
-      label="Enter your name"
-      [(ngModel)]="name"
-      placeholder="Your name"
+      label="Tamanho da senha"
+      type="number"
+      label-placement="floating"
+      fill="outline"
+      [(ngModel)]="length"
     ></ion-input>
-  </ion-item>
+
+    <ion-checkbox [(ngModel)]="useUpper">Letras maiúsculas</ion-checkbox>
+
+    <ion-checkbox [(ngModel)]="useLower">Letras minísculas</ion-checkbox>
+
+    <ion-checkbox [(ngModel)]="useNumbers">Números</ion-checkbox>
+
+    <ion-checkbox [(ngModel)]="useSpecial">Caracteres especiais</ion-checkbox>
+
+    <ion-button expand="full" (click)="generatePassword()"
+      >Gerar nova senha</ion-button
+    >
+
+    <ion-input
+      *ngIf="generatedPassword"
+      label="Senha gerada"
+      label-placement="floating"
+      fill="outline"
+      [value]="generatedPassword"
+      readonly
+    ></ion-input>
+  </div>
 </ion-content>
