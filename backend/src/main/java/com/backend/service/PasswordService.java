@@ -49,6 +49,6 @@ public class PasswordService {
     }
 
     public Iterable<Password> getPasswordHistory() {
-        return passwordRepository.findAll();
+        return passwordRepository.findAllByOrderByCreatedAtDesc();
     }
 }
