@@ -112,7 +112,7 @@ Este projeto é um aplicativo Gerador de Senhas construído com Spring Boot para
     {
       "id": 1,
       "password": "GeneratedPassword123!",
-      "generatedAt": "2024-07-12T12:00:00.000+00:00"
+      "createdAt": "2024-07-12T12:00:00.000+00:00"
     },
     ...
   ]
