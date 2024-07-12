@@ -1,6 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -14,7 +14,8 @@ import { CreateFormComponent } from './create-form/create-form.component';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    FormsModule,
+
+    ReactiveFormsModule,
   ],
   providers: [
     provideHttpClient(),

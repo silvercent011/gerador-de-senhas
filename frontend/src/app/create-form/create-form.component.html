@@ -9,24 +9,34 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <div class="form">
+  <form [formGroup]="passwordForm" (ngSubmit)="generatePassword()" class="form">
     <ion-input
       label="Tamanho da senha"
       type="number"
       label-placement="floating"
       fill="outline"
-      [(ngModel)]="length"
+      formControlName="length"
     ></ion-input>
 
-    <ion-checkbox [(ngModel)]="useUpper">Letras maiúsculas</ion-checkbox>
+    <ion-note *ngIf="length?.errors">
+      O tamanho da senha deve ser no mínimo 8 caracteres.
+    </ion-note>
 
-    <ion-checkbox [(ngModel)]="useLower">Letras minísculas</ion-checkbox>
+    <ion-checkbox formControlName="useUpper">Letras maiúsculas</ion-checkbox>
 
-    <ion-checkbox [(ngModel)]="useNumbers">Números</ion-checkbox>
+    <ion-checkbox formControlName="useLower">Letras minísculas</ion-checkbox>
 
-    <ion-checkbox [(ngModel)]="useSpecial">Caracteres especiais</ion-checkbox>
+    <ion-checkbox formControlName="useNumbers">Números</ion-checkbox>
 
-    <ion-button expand="full" (click)="generatePassword()"
+    <ion-checkbox formControlName="useSpecial"
+      >Caracteres especiais</ion-checkbox
+    >
+
+    <ion-note *ngIf="passwordForm.hasError('checkboxRequired')">
+      Uma opção deve ser selecionada
+    </ion-note>
+
+    <ion-button expand="full" type="submit" [disabled]="!passwordForm.valid"
       >Gerar nova senha</ion-button
     >
 
@@ -38,5 +48,5 @@
       [value]="generatedPassword"
       readonly
     ></ion-input>
-  </div>
+  </form>
 </ion-content>
